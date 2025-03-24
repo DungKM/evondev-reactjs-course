@@ -32,6 +32,7 @@ const App = () => {
         title="Learning Angular"
         channel="Anh Dung"
       ></YoutubeItem>
+      <YoutubeItem image="https://picsum.photos/200/200"></YoutubeItem>
     </div>
   );
 };
@@ -47,8 +48,12 @@ function YoutubeItem(props) {
       <div className="youtube-footer">
         <div className="youtube-avatar">
           <div className="youtube-infor">
-            <h3 className="youtube-title">{props.title}</h3>
-            <h4 className="youtube-channel">{props.channel}</h4>
+            <h3 className="youtube-title">
+              {props.title || "This is example of title"}
+            </h3>
+            <h4 className="youtube-channel">
+              {props.channel || "This is example of channel name"}
+            </h4>
           </div>
         </div>
       </div>
