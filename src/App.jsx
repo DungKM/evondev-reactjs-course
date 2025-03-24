@@ -17,14 +17,43 @@ function Feature() {
   );
 }
 
+// parent component
 const App = () => {
   return (
     <div>
-      <Feature></Feature>
-      <Feature></Feature>
-      <Feature></Feature>
+      {/* children components  */}
+      <YoutubeItem
+        image="https://picsum.photos/200/300"
+        title="Learning React"
+        channel="Codevolution"
+      ></YoutubeItem>
+      <YoutubeItem
+        image="https://picsum.photos/200/200"
+        title="Learning Angular"
+        channel="Anh Dung"
+      ></YoutubeItem>
     </div>
   );
 };
+
+// Props -> properties
+
+function YoutubeItem(props) {
+  return (
+    <div className="youtube-item">
+      <div className="youtube-image">
+        <img src={props.image} alt="random" />
+      </div>
+      <div className="youtube-footer">
+        <div className="youtube-avatar">
+          <div className="youtube-infor">
+            <h3 className="youtube-title">{props.title}</h3>
+            <h4 className="youtube-channel">{props.channel}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default App;
