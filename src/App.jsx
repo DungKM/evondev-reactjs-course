@@ -9,15 +9,22 @@ const App = () => {
   return (
     <div className="youtube-list">
       {/* children components  */}
-      {YoutubeData.map((item, index) => (
-        <YoutubeItem
-          key={item.id}
-          image={item.image}
-          title={item.title}
-          channel={item.channel}
-          avatar={item.avatar}
-        ></YoutubeItem>
-      ))}
+      {YoutubeData.map((item, index) => {
+        let newClass = '';
+        if (index === 1) newClass = "abc";
+        // const newClass = index == 1 ? "abc" : "";
+        
+        return (
+          <YoutubeItem
+            className={newClass}
+            key={item.id}
+            image={item.image}
+            title={item.title || "This is example of title"}
+            channel={item.channel || "This is example of channel name"}
+            avatar={item.avatar || item.image}
+          ></YoutubeItem>
+        );
+      })}
     </div>
   );
 };
@@ -25,7 +32,7 @@ const App = () => {
 // Props -> properties
 function YoutubeItem(props) {
   return (
-    <div className="youtube-item">
+    <div className={`youtube-item ${props.className}`}>
       <div
         className="youtube-image"
       >
@@ -36,16 +43,16 @@ function YoutubeItem(props) {
       </div>
       <div className="youtube-footer">
         <img
-          src={props.avatar || "https://picsum.photos/200/200"}
+          src={props.avatar}
           alt=""
           className="youtube-avatar"
         />
         <div className="youtube-infor">
           <h3 className="youtube-title">
-            {props.title || "This is example of title"}
+            {props.title}
           </h3>
           <h4 className="youtube-channel">
-            {props.channel || "This is example of channel name"}
+            {props.channel}
           </h4>
         </div>
       </div>
