@@ -2,33 +2,19 @@
 // // stateless funtional component: component nhưng không sử dụng state
 
 import { useState } from "react";
-
-// function Toggle () {
-//     return <div className='toggle'></div>
-// }
-
-// // stateful component: component có sử dụng state
-
-// function Toggle2 () {
-//     // const [isToggleOn, setIsToggleOn] = useState(false);
-//     return <div className='toggle'></div>
-// }
+import "./ToggleStyle.css";
 
 
 function Toggle() {
-    // 1. enabling state: useState(inintialValue)
-    //    - initialValue: initial value of state
-    // 2. initialize state: useState(false)
-    // 3. reading state: 
-    // 4. updating state
-
-    // const array = useState(false);
-    // console.log(array); // [state, function]
-    // console.log(array[0]); // state
-    // console.log(array[1]); // function
-
     const [on, setOn] = useState(false);
-    console.log(on); // [state, function]
-    return <div className="toggle" onClick={() => setOn(true)}>Toggle</div>
+    return <div>
+        <div className={`toggle ${on ? "active" : ""}`}>
+            <div className={`spinner ${on ? "active" : ""}`}></div>
+        </div>
+        <div className="toggle-control">
+            <div className="toggle-on" onClick={() => setOn(true)}>On</div>
+            <div className="toggle-off" onClick={() => setOn(false)}>OFF</div>
+        </div>
+    </div >
 }
 export default Toggle;
