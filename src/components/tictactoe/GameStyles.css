@@ -1,14 +1,55 @@
 .game-board {
-    margin: 25px;
+    margin: 25px auto;
     width: 500px;
     height: 500px;
-    border: 1px solid #ccc;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .game-cell {
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 40px;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.game-cell:hover {
+    background-color: #e0f7fa;
+    color: #00796b;
+}
+
+.game-winner, .game-next {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.game-reset {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.game-reset:hover {
+    background-color: #388E3C;
 }
