@@ -10,7 +10,7 @@ export function calculateWinner(cells) {
         [2, 4, 6]
     ];
     for (let index = 0; index < lines.length; index++) {
-        const [a, b, c] = array[index];
+        const [a, b, c] = lines[index];
         if(cells[a] && cells[a] === cells[b] && cells[a] === cells[c]){
             return cells[a];
         }

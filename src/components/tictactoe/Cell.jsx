@@ -1,7 +1,7 @@
-const Cell = (props) => {
+const Cell = ({ value, onClick }) => {
     return (
-        <div className="game-cell" onClick={props.onClick}>
-            {props.value}
+        <div className="game-cell" onClick={onClick}>
+            {value}
         </div>
     )
 }
