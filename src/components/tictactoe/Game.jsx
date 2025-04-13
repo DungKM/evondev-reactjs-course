@@ -1,26 +1,52 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import Board from './Board.jsx';
 import "./GameStyles.css";
 import { calculateWinner } from '../../helpers.jsx';
+const initialState = {
+    board: Array(9).fill(null),
+    xIsNext: true
+}
+//
+const gameReducer = (state, action) => {
+    switch (action.type) {
+        case 'CLICK':
+            const { board, xIsNext } = state;
+            const { index, winner } = action.payload;
+            if (winner || board[index]) return state;
+            const nextState = JSON.parse(JSON.stringify(state));
+            nextState.board[index] = xIsNext ? "X" : "O";
+            nextState.xIsNext = !xIsNext;
+            return nextState;
+        default:
+            break;
+    }
+    return state;
+}
 const Game = () => {
     // const [board, setBoard] = useState(Array(9).fill(null));
     // const [xIsNext, setXisNext] = useState(true);
-    const [state, setState] = useState({
-        board: Array(9).fill(null),
-        xIsNext: true
-    })
+    const [state, dispatch] = useReducer(gameReducer, initialState);
+
+    // const [state, setState] = useState({
+    //     board: Array(9).fill(null),
+    //     xIsNext: true
+    // })
     const winner = calculateWinner(state.board);
     const handleClick = (index) => {
         const BoardCopy = [...state.board];
         if (winner || BoardCopy[index]) return;
-        BoardCopy[index] = state.xIsNext ? "X" : "O";
+        dispatch({
+            type: 'CLICK',
+            payload: { index, winner }
+        });
+        // BoardCopy[index] = state.xIsNext ? "X" : "O";
         // setBoard(BoardCopy);
         // setXisNext(!xIsNext);
-        setState({
-            ...state,
-            board: BoardCopy,
-            xIsNext: !state.xIsNext
-        })
+        // setState({
+        //     ...state,
+        //     board: BoardCopy,
+        //     xIsNext: !state.xIsNext
+        // })
     }
 
     return <div>
