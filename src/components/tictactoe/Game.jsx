@@ -9,7 +9,7 @@ const initialState = {
 //
 const gameReducer = (state, action) => {
     switch (action.type) {
-        case 'CLICK':
+        case 'CLICK': {
             const { board, xIsNext } = state;
             const { index, winner } = action.payload;
             if (winner || board[index]) return state;
@@ -17,6 +17,13 @@ const gameReducer = (state, action) => {
             nextState.board[index] = xIsNext ? "X" : "O";
             nextState.xIsNext = !xIsNext;
             return nextState;
+        }
+        case 'RESET':
+            const nextState = JSON.parse(JSON.stringify(state));
+            nextState.board = Array(9).fill(null);
+            nextState.xIsNext = true;
+            return nextState;
+
         default:
             break;
     }
@@ -49,16 +56,20 @@ const Game = () => {
         // })
     }
 
+    const handleReset = () => {
+        dispatch({
+            type: 'RESET',
+            payload: { board: Array(9).fill(null), xIsNext: true }
+        });
+        // setBoard(Array(9).fill(null));
+        // setXisNext(true);
+        // setState(initialState);
+    }
+
     return <div>
         <Board cells={state.board} onClick={handleClick}></Board>
         {winner ? <div className="game-winner">Winner: {winner}</div> : <div className="game-next">Next player: {state.xIsNext ? "X" : "O"}</div>}
-        <button className="game-reset" onClick={() => {
-            setState({
-                ...state,
-                board: Array(9).fill(null),
-                xIsNext: true
-            })
-        }}>Reset</button>
+        <button className="game-reset" onClick={handleReset}>Reset</button>
     </div>
 }
 export default Game;
