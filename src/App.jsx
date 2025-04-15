@@ -1,12 +1,13 @@
 import "./App.css";
-import Game from "./components/tictactoe/Game";
+import Button from "./components/button/buttton";
 
 
 // parent component
 const App = () => {
   return (
     <div>
-      <Game></Game>
+      <Button>Primary</Button>
+      <Button className="btn--secondary">Secondary</Button>
     </div>
   );
 };
