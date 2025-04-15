@@ -1,8 +1,8 @@
-import './Button.scss';
+import styles from './Button.module.css';
 
 const Button = (props) => {
     return (
-        <button className={`btn ${props.className || ''}`}>
+        <button className={`${styles.btn} ${props.secondary ? styles.btnSecondary : ""}`}>
             {props.children}
         </button>
     );
