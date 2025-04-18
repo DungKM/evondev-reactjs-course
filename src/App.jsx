@@ -1,13 +1,20 @@
 import "./App.css";
-import Button from "./components/button/buttton";
+import Card from "./components/card/Card";
+import CardList from "./components/card/CardList";
 
 
 // parent component
 const App = () => {
   return (
     <div>
-      <Button>Primary</Button>
-      <Button secondary>Secondary</Button>
+      <CardList>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+      </CardList>
     </div>
   );
 };
