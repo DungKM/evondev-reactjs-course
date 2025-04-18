@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const StyleCard = styled.div`
     position: relative;
@@ -63,8 +63,11 @@ const CardAmount = styled.span`
     font-size: 18px;
     font-weight: bold;
     background: linear-gradient(86.88deg, #7D6AFF 1.38%, #ff8c00 64.35%, #FC2872 119.91%);
+    ${(props) => props.secondary && css`
+        background: linear-gradient(86.88deg, #6aff72, #288bfc);
+    `};
     color: transparent;
-    --ưebkit-background-clip: text;
+    --webkit-background-clip: text;
     background-clip: text;
 `;
 const CardHeart = styled.div`
@@ -77,7 +80,7 @@ const CardHeartImg = styled.img`
     height: 20px;
 `;
 
-const Card = () => {
+const Card = (props) => {
     return (<StyleCard>
         <CardImage>
             <CardImg src="https://cdn.dribbble.com/userupload/33476220/file/original-d4ca59ef4ed0cbb2bb3600be756e5d74.png?resize=1024x768&vertical=center" alt="" />
@@ -95,7 +98,7 @@ const Card = () => {
             </CardTop>
             <CardFooter>
                 <CardTitle>Cosmic Perspective</CardTitle>
-                <CardAmount>12,000 PSL</CardAmount>
+                <CardAmount secondary={props.secondary}>12,000 PSL</CardAmount>
             </CardFooter>
         </CardContent>
     </StyleCard>);

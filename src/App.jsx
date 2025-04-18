@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       <CardList>
-        <Card></Card>
+        <Card secondary={true}></Card>
         <Card></Card>
         <Card></Card>
         <Card></Card>
