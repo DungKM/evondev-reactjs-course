@@ -15,18 +15,18 @@ const StyleCard = styled.div`
         }
     }
 `;
-const CardImage = styled.div`
-    width: 100%;
-    height: 400px;
-    border-radius: 8px;
-`;
-const CardImg = styled.img`
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: inherit;
-`;
+// const CardImage = styled.div`
+//     width: 100%;
+//     height: 400px;
+//     border-radius: 8px;
+// `;
+// const CardImg = styled.img`
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     border-radius: inherit;
+// `;
 const CardContent = styled.div`
     position: absolute;
     left: 50%;
@@ -69,7 +69,8 @@ const CardFooter = styled.div`
 const CardTitle = styled.h3`
     font-size: 18px;
     font-weight: 500;
-    color: black;
+    color: ${(props) => props.theme.colors.primary};
+
 `;
 const CardAmount = styled.span`
     font-size: 18px;
